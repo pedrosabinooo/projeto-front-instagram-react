@@ -2,6 +2,10 @@ import { useState } from "react"
 
 function PostItem(props) {
     const [bookmark, setBookmark] = useState("bookmark-outline")
+    const [like, setLike] = useState("heart-outline")
+    const color = (like === "heart" ? {color: 'red'} : {})
+    const contadorLikes = ~~props.contadorLikes + ~~(like === "heart")
+
     return (
         <div class="post">
             <div class="topo">
@@ -15,13 +19,13 @@ function PostItem(props) {
             </div>
 
             <div class="conteudo">
-                <img src={props.imagemPost} alt="Imagem post" />
+                <img src={props.imagemPost} onClick={() => setLike(like === "heart-outline" ? "heart" : "heart-outline")} alt="Imagem post" />
             </div>
 
             <div class="fundo">
                 <div class="acoes">
                     <div>
-                        <ion-icon name="heart-outline"></ion-icon>
+                        <ion-icon name={like} style={color} onClick={() => setLike(like === "heart-outline" ? "heart" : "heart-outline")}></ion-icon>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
@@ -33,7 +37,7 @@ function PostItem(props) {
                 <div class="curtidas">
                     <img src={props.imagemLikePrincipal} alt="Imagem perfil" />
                     <div class="texto">
-                        Curtido por <strong>{props.usernameLikePrincipal}</strong> e <strong>outras {props.contadorLikes} pessoas</strong>
+                        Curtido por <strong>{props.usernameLikePrincipal}</strong> e <strong>outras {contadorLikes} pessoas</strong>
                     </div>
                 </div>
             </div>
@@ -46,7 +50,6 @@ export default function Posts() {
         { username: "meowed", imagemPerfil: "assets/img/meowed.svg", imagemPost: "assets/img/gato-telefone.svg", usernameLikePrincipal: "respondeai", imagemLikePrincipal: "assets/img/respondeai.svg", contadorLikes: 101523 },
         { username: "barked", imagemPerfil: "assets/img/barked.svg", imagemPost: "assets/img/dog.svg", usernameLikePrincipal: "adorable_animals", imagemLikePrincipal: "assets/img/adorable_animals.svg", contadorLikes: 99159 }
     ]
-    // TODO Curtir post
 
     return (
         <div class="posts">
@@ -57,7 +60,7 @@ export default function Posts() {
                     imagemPost={p.imagemPost}
                     usernameLikePrincipal={p.usernameLikePrincipal}
                     imagemLikePrincipal={p.imagemLikePrincipal}
-                    contadorLikes={(p.contadorLikes).toLocaleString('pt-BR')}
+                    contadorLikes={(p.contadorLikes)}
                 />
             )}
         </div>
