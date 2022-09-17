@@ -1,11 +1,10 @@
 import Sugestoes from "./Sugestoes";
 import Usuario from "./Usuario";
 
-
 export default function SideBar() {
     return (
         <div class="sidebar">
-            <Usuario />
+            <Usuario username="catanacomics" nomePerfil="Catana" imagemPerfil="assets/img/catanacomics.svg" />
 
             <Sugestoes />
             

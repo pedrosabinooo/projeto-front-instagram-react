@@ -1,13 +1,14 @@
 
 
-export default function Usuario() {
+export default function Usuario(props) {
+    // TODO Edição do nome de exibição
     return (
         <div class="usuario">
-            <img src="assets/img/catanacomics.svg" alt="user pic"/>
+            <img src={props.imagemPerfil} alt="Imagem perfil"/>
             <div class="texto">
-                <strong>catanacomics</strong>
+                <strong>{props.username}</strong>
                 <span>
-                    Catana
+                    {props.nomePerfil}
                     <ion-icon name="pencil"></ion-icon>
                 </span>
             </div>
