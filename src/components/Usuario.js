@@ -1,6 +1,5 @@
 import { useState } from "react"
 
-
 export default function Usuario(props) {
     const [nomePerfil, setNomePerfil] = useState(props.nomePerfil)
     const [imagemPerfil, setImagemPerfil] = useState(props.imagemPerfil)

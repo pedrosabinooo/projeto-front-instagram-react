@@ -1,4 +1,7 @@
+import { useState } from "react"
+
 function PostItem(props) {
+    const [bookmark, setBookmark] = useState("bookmark-outline")
     return (
         <div class="post">
             <div class="topo">
@@ -23,7 +26,7 @@ function PostItem(props) {
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
                     <div>
-                        <ion-icon name="bookmark-outline"></ion-icon>
+                        <ion-icon name={bookmark} onClick={() => setBookmark(bookmark === "bookmark-outline" ? "bookmark" : "bookmark-outline")}></ion-icon>
                     </div>
                 </div>
 
@@ -43,9 +46,8 @@ export default function Posts() {
         { username: "meowed", imagemPerfil: "assets/img/meowed.svg", imagemPost: "assets/img/gato-telefone.svg", usernameLikePrincipal: "respondeai", imagemLikePrincipal: "assets/img/respondeai.svg", contadorLikes: 101523 },
         { username: "barked", imagemPerfil: "assets/img/barked.svg", imagemPost: "assets/img/dog.svg", usernameLikePrincipal: "adorable_animals", imagemLikePrincipal: "assets/img/adorable_animals.svg", contadorLikes: 99159 }
     ]
-    // TODO Salvar post
     // TODO Curtir post
-    
+
     return (
         <div class="posts">
             {posts.map((p) =>
@@ -55,7 +57,7 @@ export default function Posts() {
                     imagemPost={p.imagemPost}
                     usernameLikePrincipal={p.usernameLikePrincipal}
                     imagemLikePrincipal={p.imagemLikePrincipal}
-                    contadorLikes={p.contadorLikes}
+                    contadorLikes={(p.contadorLikes).toLocaleString('pt-BR')}
                 />
             )}
         </div>
