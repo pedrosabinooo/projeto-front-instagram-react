@@ -4,7 +4,7 @@ function PostItem(props) {
     const [bookmark, setBookmark] = useState("bookmark-outline")
     const [like, setLike] = useState("heart-outline")
     const color = (like === "heart" ? {color: 'red'} : {})
-    const contadorLikes = ~~props.contadorLikes + ~~(like === "heart")
+    const contadorLikes = props.contadorLikes + ~~(like === "heart")
 
     return (
         <div class="post">
@@ -37,7 +37,7 @@ function PostItem(props) {
                 <div class="curtidas">
                     <img src={props.imagemLikePrincipal} alt="Imagem perfil" />
                     <div class="texto">
-                        Curtido por <strong>{props.usernameLikePrincipal}</strong> e <strong>outras {contadorLikes} pessoas</strong>
+                        Curtido por <strong>{props.usernameLikePrincipal}</strong> e <strong>outras {contadorLikes.toLocaleString('pt-BR')} pessoas</strong>
                     </div>
                 </div>
             </div>
