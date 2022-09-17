@@ -1,15 +1,18 @@
+import { useState } from "react"
 
 
 export default function Usuario(props) {
-    // TODO Edição do nome de exibição
+    const [nomePerfil, setNomePerfil] = useState(props.nomePerfil)
+    const [imagemPerfil, setImagemPerfil] = useState(props.imagemPerfil)
+
     return (
         <div class="usuario">
-            <img src={props.imagemPerfil} alt="Imagem perfil"/>
+            <img src={imagemPerfil} onClick={() => setImagemPerfil(prompt("Digite o link da sua imagem de perfil:"))} alt="Imagem perfil"/>
             <div class="texto">
                 <strong>{props.username}</strong>
                 <span>
-                    {props.nomePerfil}
-                    <ion-icon name="pencil"></ion-icon>
+                    {nomePerfil}
+                    <ion-icon name="pencil" onClick={() => setNomePerfil(prompt("Digite o nome de exibição:"))}></ion-icon>
                 </span>
             </div>
         </div>

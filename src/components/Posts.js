@@ -43,7 +43,9 @@ export default function Posts() {
         { username: "meowed", imagemPerfil: "assets/img/meowed.svg", imagemPost: "assets/img/gato-telefone.svg", usernameLikePrincipal: "respondeai", imagemLikePrincipal: "assets/img/respondeai.svg", contadorLikes: 101523 },
         { username: "barked", imagemPerfil: "assets/img/barked.svg", imagemPost: "assets/img/dog.svg", usernameLikePrincipal: "adorable_animals", imagemLikePrincipal: "assets/img/adorable_animals.svg", contadorLikes: 99159 }
     ]
-
+    // TODO Salvar post
+    // TODO Curtir post
+    
     return (
         <div class="posts">
             {posts.map((p) =>
